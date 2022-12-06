@@ -1,6 +1,6 @@
 
-import {Day5} from './Day5/Day5';
+import {Day7} from './Day7/Day7';
 
-let d = new Day5(null);
-console.log(d.Challenge1(null));
-console.log(d.Challenge2(null));
+let d = new Day7(null);
+console.log(d.Challenge1());
+console.log(d.Challenge2());
