@@ -1,3 +1,6 @@
+import { Grid } from "./Grid";
+import { InputAction } from "./InputAction";
+
 const {readFileSync} = require('fs');
 
 export class Day9 {
@@ -12,18 +15,47 @@ export class Day9 {
         }
     }
 
-    Challenge1():number {
+    Challenge1(len: number, track: number):number {
+
+        let actions: InputAction[] = []
 
         let lines = this.input.split("\n");
+        for(const line of lines) {
+            let l = line.split(" ");
+            actions.push(new InputAction(l[0], parseInt(l[1])));
+        }
 
-        return 0;
+
+        let grid = new Grid(2, 1);
+        for(const a of actions) {
+            for (var l = 0; l<a.amount; l++) {
+                grid.ExecuteAction(0, 1, a);
+            }
+        }
+
+        return grid.GetVisited();
     }
 
-    Challenge2():number {
+    Challenge2(len: number, track: number):number {
+
+        let actions: InputAction[] = []
 
         let lines = this.input.split("\n");
+        for(const line of lines) {
+            let l = line.split(" ");
+            actions.push(new InputAction(l[0], parseInt(l[1])));
+        }
 
-        return 0;
+
+        let grid = new Grid(len, track);
+        for(const a of actions) {
+            for (var l = 0; l<a.amount; l++) {
+                grid.MoveAll(a);
+            }
+
+        }
+
+        return grid.GetVisited();
     }
 
 }
